@@ -1,11 +1,11 @@
 {
-    "name": "EDA",
-    "short_name": "EDA",
+    "name": "CARTEL",
+    "short_name": "CARTEL",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#020202",
     "theme_color": "#0175C2",
-    "description": "Доставка еды.",
+    "description": "Доставка еды",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

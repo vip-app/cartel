@@ -27,27 +27,6 @@ function init() {
                 }
             }
         });
-    // Создаём макет содержимого.
-        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-        ),
-
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            hintContent: 'Семейный ресторан',
-            balloonContent: 'Семейный ресторан'
-        }, {
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#image',
-            // Своё изображение иконки метки.
-            iconImageHref: 'favicon.png',
-            // Размеры метки.
-            iconImageSize: [30, 42],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-5, -38]
-        }),
-		myMap.geoObjects.add(myPlacemark);
     // Пользователь сможет построить только автомобильный маршрут.
     routePanelControl.routePanel.options.set({
         types: {auto: true}
@@ -56,7 +35,7 @@ function init() {
     // Если вы хотите задать неизменяемую точку "откуда", раскомментируйте код ниже.
     routePanelControl.routePanel.state.set({
         fromEnabled: false,
-        from: 'Москва, Льва Толстого 16'
+        from: 'Чеченская Республика, село Знаменское, Московская улица 6'
     });
 
     myMap.controls.add(routePanelControl).add(zoomControl);
