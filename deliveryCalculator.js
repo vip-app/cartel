@@ -5,7 +5,7 @@ function init() {
     var DELIVERY_TARIFF = 23,
 	    myMap = new ymaps.Map('map', {
             center: [43.672524, 45.114319],
-            zoom: 11,
+            zoom: 14,
             controls: []
         }),
     // Создадим панель маршрутизации.
