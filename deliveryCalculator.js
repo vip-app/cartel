@@ -77,7 +77,8 @@ function init() {
 							function (to) {
 								var toNearest = to.geoObjects.get(0);
 								var toAddress = toNearest.properties.get('text');
-								window.parent.postMessage({"from": fromAddress, "to": toAddress, "km": length.text, "price": price}, "*");
+								var coordTo = coorTo.toString();
+								window.parent.postMessage({"from": fromAddress, "to": toAddress, "coorTo": coordTo, "km": length.text, "price": price}, "*");
 							},
 							function (err) {
 								alert('Ошибка');
