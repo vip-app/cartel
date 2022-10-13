@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <title>Cartel | РЕСТОРАН</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <link rel="icon" href="images/favicon.png" type="image/png">
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+        <link rel="stylesheet" href="fonts/beyond_the_mountains-webfont.css" type="text/css"/>
+
+        <!-- Stylesheets -->
+        <link href="plugin-frameworks/bootstrap.min.css" rel="stylesheet">
+        <link href="plugin-frameworks/swiper.css" rel="stylesheet">
+        <link href="fonts/ionicons.css" rel="stylesheet">
+        <link href="common/styles.css" rel="stylesheet">
+		<link rel="stylesheet" href="common/phone.css">
+		<script src="https://use.fontawesome.com/d78d833653.js"></script>
+</head>
+<body>
+<div id="menu">
+<header>
+        <div class="container">
+                <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
+        </div><!-- container -->
+</header>
+
+<section class="bg-1 h-700x main-slider pos-relative">
+        <div class="container h-100">
+                <div class="dplay-tbl">
+                        <div class="dplay-tbl-cell center-text color-white">
+                                <h5><b>РЕСТОРАН ДЛЯ ВСЕЙ СЕМЬИ</b></h5>
+                                <h1 class="mt-30 mb-15">Cartel</h1>
+                        </div><!-- dplay-tbl-cell -->
+                </div><!-- dplay-tbl -->
+        </div><!-- container -->
+</section>
+
+<section>
+        <div class="container">
+                <div class="row">
+                        <div class="col-sm-12">
+                                <ul class="selecton brdr-b-primary mb-70">
+                                        <li v-for="category in categories" :key="category.category"><a @click="setCurrentMenu(category.category)" :class="{active: category.category === currentCategory ? true : false}" data-select="*"><b>{{category.category.toUpperCase()}}</b></a></li>
+                                </ul>
+                        </div><!--col-sm-12-->
+                </div><!--row-->
+
+                <div class="row">
+                        <div v-for="item in currentMenu" class="col-md-6 food-menu">
+                                <div class="sided-90x mb-30 ">
+                                        <div class="s-left"><img class="br-3" :src="item.image" style="width: 80px; height: 80px; object-fit: cover;" alt="Menu Image"></div><!--s-left-->
+                                        <div class="s-right">
+                                                <h5 class="mb-10"><b>{{item.title}}</b><b class="color-primary float-right">&#8381; {{item.price}}</b></h5>
+                                                <p class="pr-70">{{item.description}}</p>
+                                        </div><!--s-right-->
+                                </div><!-- sided-90x -->
+                        </div><!-- food-menu -->
+                </div><!-- row -->
+				
+        </div><!-- container -->
+</section>
+<a href="tel:+79630007744" title="Позвонить"><div class="phone-button"><i class="fa fa-phone"></i></div></a>
+<footer class="pb-50  pt-70 pos-relative">
+        <div class="container-fluid">
+                
+                <div>
+                    <p><b>Адрес:</b></p>
+                    <p>Надтеречный район, с Знаменское, ул Московская 7</p>
+                </div>
+
+                <p class="color-light font-9 mt-50 mt-sm-30"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены | Этот сайт создан в студии <a class="underline-secondary" href="https://www95.ru" target="_blank"><b>WWW95.RU</b></a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div><!-- container -->
+</footer>
+</div>
+<!-- SCIPTS -->
+<script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
+<script src="plugin-frameworks/bootstrap.min.js"></script>
+<script src="plugin-frameworks/swiper.js"></script>
+<script src="common/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+	new Vue({
+	  el: "#menu",
+	  data:{
+	    categories:[],
+		menu:[],
+		currentCategory: 'Все',
+		currentMenu:[]
+	  },
+	  mounted() {
+	    fetch('https://raw.githubusercontent.com/vip-app/json/main/cartel/cartel2.json')
+	      .then(response => response.json())
+		  .then(json => {
+		     this.categories = json.categories;
+		     this.menu = json.products;
+			 this.currentMenu = json.products;
+		  });
+	  },
+	  methods:{
+	    setCurrentMenu(category){
+		  this.currentCategory = category;
+		  if(category === 'Все'){
+		    this.currentMenu = this.menu;
+		  }else{
+		    this.currentMenu = this.menu.filter(item => item.category === category);
+		  }
+		}
+	  }
+	});
+</script>
+</body>
+</html>
