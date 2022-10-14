@@ -49,10 +49,10 @@
 
                 <div class="row">
                         <div v-for="item in currentMenu" class="col-md-6 food-menu">
-                                <div class="sided-90x mb-30 ">
+						        <div class="sided-90x mb-30 ">
                                         <div class="s-left"><img class="br-3" :src="item.image" style="width: 80px; height: 80px; object-fit: cover;" alt="Menu Image"></div><!--s-left-->
                                         <div class="s-right">
-                                                <h5 class="mb-10"><b>{{item.title}}</b><b class="color-primary float-right">&#8381; {{item.price}}</b></h5>
+                                                <h5 class="mb-10"><b>{{item.title}} </b><b class="color-primary float-right"> &#8381; {{item.price}}</b></h5>
                                                 <p class="pr-70">{{item.description}}</p>
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
@@ -92,7 +92,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
 		currentMenu:[]
 	  },
 	  mounted() {
-	    fetch('https://raw.githubusercontent.com/vip-app/json/main/cartel/cartel2.json')
+	    fetch('https://raw.githubusercontent.com/vip-app/json/main/cartel/cartel.json')
 	      .then(response => response.json())
 		  .then(json => {
 		     this.categories = json.categories;
